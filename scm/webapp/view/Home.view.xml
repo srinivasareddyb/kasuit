@@ -1,0 +1,7 @@
+<mvc:View controllerName="com.scm.scm.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+	xmlns:tnt="sap.tnt">
+   <Page title="Home"></Page>
+
+</mvc:View>

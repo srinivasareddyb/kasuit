@@ -7,7 +7,7 @@ sap.ui.define([
     function (BaseController) {
         "use strict";
 
-        return BaseController.extend("com.scm.scm.controller.App", {
+        return BaseController.extend("com.scm.scm.controller.Home", {
             onInit: function () {
 
             }
