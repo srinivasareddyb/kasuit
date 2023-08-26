@@ -2,7 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m" 
 	xmlns:tnt="sap.tnt">
-    <tnt:ToolPage id="toolPage" >
+    <tnt:ToolPage id="idToolPage" >
 	<tnt:header>
 			<tnt:ToolHeader id="_IDGenToolHeader1">
 				<Button id="sideNavigationToggleButton"
@@ -15,15 +15,15 @@
 					</layoutData>
 				</Button>
 				<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
-					<Title id="pageTitle"></Title>
+					<Title id="pageTitle" text="{i18n>shopingCart}"></Title>
 				<ToolbarSpacer id="_IDGenToolbarSpacer2"/>
 				<Button id="home" type="Accept" icon="sap-icon://home" tooltip="{i18n>home}" press="onHome"></Button>
 			</tnt:ToolHeader>
-		</tnt:header>
+	</tnt:header>
 		<tnt:sideContent>
 			<tnt:SideNavigation id="sideNav" expanded="true" itemSelect="onItemSelect">
 				<tnt:NavigationList id="_IDGenNavigationList1">
-					<tnt:NavigationListItem id="_IDGenNavigationListItem1" key="MatLook" text="{i18n>materialLookup}" icon="sap-icon://database"/>
+					<tnt:NavigationListItem id="_IDGenNavigationListItem1" key="Products" text="{i18n>Materails}" icon="sap-icon://database"/>
 					<tnt:NavigationListItem id="_IDGenNavigationListItem2" key="Favs" text="{i18n>favorite}" icon="sap-icon://favorite-list"/>
 					<tnt:NavigationListItem id="_IDGenNavigationListItem3" key="Cart" text="{i18n>cart}" icon="sap-icon://cart"/>
 				</tnt:NavigationList>

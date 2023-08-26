@@ -1,0 +1,37 @@
+<mvc:View
+    controllerName="com.scm.scm.controller.DashBoard"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+    <ScrollContainer
+        id="homeView"
+        height="100%"
+        horizontal="true"
+        vertical="true">
+        
+        <VBox class="sapUiSmallMargin">
+            <Link
+                text="{i18n>cartContents}"
+                press="onCartPress"
+            />
+            <HeaderContainer
+                id="CartCont"
+                scrollStep="400"
+            />
+        </VBox>
+        <VBox class="sapUiSmallMargin">
+            <Link
+                text="{i18n>favContents}"
+                press="onFavPress"
+            />
+            <HeaderContainer
+                id="Favcont"
+                scrollStep="400"
+            />
+        </VBox>
+    </ScrollContainer>
+</mvc:View>

@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="com.scm.scm.controller.Cart"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page id="cartView" floatingFooter="true" showHeader="false">
+		<Table mode="MultiSelect" id="cartT" delete="onDelete" items="{/results}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="{i18n>cartD}" level="H2"/>
+                    <ToolbarSpacer/>
+					<SearchField liveChange="onSearchCart" width="30%" id="headSearch" placeholder="{i18n>SearchCart}"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column hAlign="Left" vAlign="Middle"></Column>
+				<Column hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>prod}"/></Column>
+				<Column hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>manf}"/></Column>
+				<Column hAlign="Left" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>desc}"/></Column>
+				<Column hAlign="Center"><Label text="{i18n>quant}"/></Column>
+				<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>unit}"/></Column>
+				<Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>pricePQ}"/></Column>
+			    <Column hAlign="Right" vAlign="Middle"></Column>
+			    <!-- <Column hAlign="Center" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>pricePS}"/></Column> -->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Image src="{path: 'Category/Picture', formatter: '.formatter.formatPhoto'}" alt="{i18n>prodImg}" width="80px" height="50px"/>
+						<Link text="{ProductName}" press="onProductSelect"/>
+						<Text text="{Category/CategoryName}"/>
+						<Text text="{Category/Description}"/>
+						<StepInput   min = "1" max ="100" change="onChange"/>
+						<Text text="{QuantityPerUnit}"/>
+					    <ObjectNumber number="{path: 'UnitPrice', formatter: '.formatter.getPrice'}" unit="USD"/>
+					    <!-- <ObjectNumber number=" unit="USD"/> -->
+						<Button icon ="sap-icon://decline" type="Emphasized" press="onRemove"></Button>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				  <Button type="Ghost"  icon="sap-icon://cart-approval" text="Check Out" press="onCheckOut"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

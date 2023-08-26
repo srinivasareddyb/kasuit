@@ -1,0 +1,41 @@
+<mvc:View
+    controllerName="com.scm.scm.controller.Favorites"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page
+        title="{i18n>Favorites}"
+        showHeader="true"
+        showFooter="true">
+        <content>
+        <Table id="favT" mode="Delete" delete="onDelete" items="{/results}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="{i18n>Favorites}" level="H2"/>
+						<ToolbarSpacer/>
+							<SearchField liveChange="onSearchFav" width="30%" id="headSearch" placeholder="{i18n>SearchFav}"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column hAlign="Left" vAlign="Middle"></Column>
+				<Column hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>prod}"/></Column>
+				<Column hAlign="Left" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"><Label text="{i18n>desc}"/></Column>
+				<Column hAlign="Center"><Label text="{i18n>price}"/></Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Image src="{path: 'Category/Picture', formatter: '.formatter.formatPhoto'}" alt="{i18n>prodImg}" width="80px" height="50px"/>
+						<Link text="{ProductName}" press="onProductSelect"/>
+						<Text text="{Category/CategoryName}"/>
+						<ObjectNumber number="{path: 'UnitPrice', formatter: '.formatter.getPrice'}" unit="USD"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+        </content>
+        <footer></footer>
+    </Page>
+</mvc:View>

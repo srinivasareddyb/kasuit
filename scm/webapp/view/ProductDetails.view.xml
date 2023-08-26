@@ -1,0 +1,185 @@
+<mvc:View
+    controllerName="com.scm.scm.controller.ProductDetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+    <Page
+        id="idProductPage"
+        showFooter="true"
+    >
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button
+                        type="Back"
+                        press="onBack"
+                    />
+                </contentLeft>
+                <contentMiddle>
+                    <Title
+                        level="H2"
+                        text="{ProdModel>/ProductName}"
+                    />
+                </contentMiddle>
+                <contentRight>
+                    <!-- <Button
+						icon="sap-icon://customer"
+						press=".onAvatarPress"
+						tooltip="{i18n>avatarButtonTooltip}"/> -->
+                    <!-- <ToggleButton
+						icon="sap-icon://cart"
+						pressed="{= ${appView>/layout}.startsWith('ThreeColumns') }"
+						tooltip="{i18n>toCartButtonTooltip}"
+						press=".onToggleCart">
+					</ToggleButton> -->
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:SimpleForm
+                id="idSimpleFormProduct"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="3"
+                columnsL="2"
+                columnsM="2"
+                singleContainerFullSize="false">
+            	<f:toolbar>
+				<Toolbar id="TB1">
+                    <Title text="{ProdModel>/ProductName} / {ProdModel>/ProductID}"/>
+					<ToolbarSpacer />
+					<Button id="idFavBut" icon="sap-icon://unfavorite" press="onFavoritePress"/>
+				</Toolbar>
+			</f:toolbar>
+                <f:content>
+                    <core:Title text="Product Details" />
+
+                    <Label text="Category Name" />
+                    <Text
+                        text="{ProdModel>/Category/CategoryName} / {ProdModel>/Category/CategoryID}"
+                    />
+
+                    <Label text="Category Description" />
+                    <Text text="{ProdModel>/Category/Description}" />
+
+                    <Label text="Quantity Per Unit" />
+                    <Text text="{ProdModel>/QuantityPerUnit}" />
+
+                    <Label text="Units In Stock" />
+                    <Text text="{ProdModel>/UnitsInStock}" />
+
+                    <Label text="Units On Order" />
+                    <Text text="{ProdModel>/UnitsOnOrder}" />
+
+                    <Label text="Reorder Level" />
+                    <Text text="{ProdModel>/ReorderLevel}" />
+
+                    <Label text="Unit Price" />
+                    <!-- <Text
+                        text="{path: 'ProdModel>/UnitPrice', formatter: '.formatter.getPrice'} USD"
+                    /> -->
+
+                    <ObjectIdentifier title="{path: 'ProdModel>/UnitPrice', formatter: '.formatter.getPrice'} USD"/>
+
+                    <Label text="Stock"/>
+                    <ObjectStatus
+                                    text="{  path : 'ProdModel>/Discontinued',
+							                 formatter : '.formatter.getDiscontinued' 
+										   }"
+                                    state="{= ${ProdModel>/Discontinued} ? 'Error':'Success'}"
+                                />
+
+                    <core:Title text="Supplier Information" />
+                    <Label text="Supplier ID" />
+                    <Text text="{ProdModel>/Supplier/SupplierID}" />
+                    <Label text="Company Name" />
+                    <Text text="{ProdModel>/Supplier/CompanyName}" />
+                    <Label text="Contact Name" />
+                    <Text text="{ProdModel>/Supplier/ContactName}" />
+                    <Label text="Contact Title" />
+                    <Text text="{ProdModel>/Supplier/ContactTitle}" />
+                    <Label text="Address" />
+                    <Text text="{ProdModel>/Supplier/Address}" />
+
+                    <Label text="Region" />
+                    <Text text="{ProdModel>/Supplier/Region}" />
+                    <Label text="ZIP Code/City" />
+                    <Text text="{ProdModel>/Supplier/City} - {ProdModel>/Supplier/PostalCode} " />
+
+                    <Label text="Country" />
+                    <Text text="{ProdModel>/Supplier/Country}" />
+
+                    <Label text="Phone" />
+                    <Text text="{ProdModel>/Supplier/Phone}" />
+
+                    <Label text="Fax" />
+                    <Text text="{ProdModel>/Supplier/Fax}" />
+
+                    <core:Title text="Picture" />
+                    <VBox
+                        class="sapUiSmallMarginTopBottom sapUiLargeMarginBeginEnd"
+                        alignItems="Center">
+                        <Image
+                            src="{path: 'ProdModel>/Category/Picture', formatter: '.formatter.formatPhoto'}"
+                            class="sapUiSmallMargin"
+                            decorative="true"
+                            densityAware="false"
+                            width="100%"
+                            height="100%"
+                        >
+                            <detailBox>
+                                <LightBox id="lightBox">
+                                    <imageContent>
+                                        <LightBoxItem
+                                            imageSrc="{path: 'ProdModel>/Category/Picture', formatter: '.formatter.formatPhoto'}"
+                                            title="{Name}"
+                                        />
+                                    </imageContent>
+                                </LightBox>
+                            </detailBox>
+                        </Image>
+                    </VBox>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Label text="{i18n>quant}" />
+                <Input
+                    width="10%"
+                    id="productInput"
+                    type="Number"
+                    value="1"
+                    placeholder="{i18n>quant}"
+                />
+                <!-- <Text
+                    id="bottomUOM"
+                    text="EA"
+                /> -->
+                <Button
+                    type="Emphasized"
+                    text="{i18n>AddToCart}"
+                    icon="sap-icon://cart"
+                    tooltip="{i18n>AddToCart}"
+                    press="onCartPress"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
